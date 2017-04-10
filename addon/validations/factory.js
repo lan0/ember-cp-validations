@@ -335,6 +335,7 @@ function createAttrsClass(validatableAttributes, validationRules, model) {
        */
       Object.keys(nestedClasses[path] || []).forEach((key) => {
         let o = get(this, key);
+        if (o.get('isDestroyed')) { return; }
         o.set('_model', null);
         o.destroy();
       });
